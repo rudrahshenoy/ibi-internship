@@ -1,0 +1,68 @@
+Product Recommendation API Documentation
+Base URL
+http://localhost:8000/api
+
+Endpoints
+1. GET /recommendations/user/{user_id}
+
+Returns product recommendations for a given user using collaborative filtering.
+
+Request
+
+GET /recommendations/user/123
+
+Query Parameters
+Parameter	Type	Required	Description
+user_id	int	Yes	User ID for generating recommendations
+top_n	int	No	Number of recommendations (default = 10)
+Response
+{
+  "user_id": 123,
+  "recommendations": [
+    {"product_id": "P001", "score": 0.91},
+    {"product_id": "P127", "score": 0.87}
+  ]
+}
+
+2. GET /recommendations/product/{product_id}
+
+Returns similar products based on item-based collaborative filtering.
+
+Request
+
+GET /recommendations/product/842
+
+Response
+{
+  "product_id": "842",
+  "similar_products": [
+    {"product_id": "845", "similarity": 0.88},
+    {"product_id": "850", "similarity": 0.82}
+  ]
+}
+
+3. POST /predict
+
+Predicts rating/likelihood of a user purchasing a product.
+
+Request Body
+{
+  "user_id": 123,
+  "product_id": "P001"
+}
+
+Response
+{
+  "user_id": 123,
+  "product_id": "P001",
+  "predicted_score": 4.52
+}
+
+Error Responses
+{
+  "error": "User not found"
+}
+
+{
+  "error": "Invalid product ID"
+}
