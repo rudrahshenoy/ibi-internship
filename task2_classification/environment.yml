@@ -1,0 +1,19 @@
+name: ecommerce-categorization
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+    - numpy
+    - pandas
+    - scikit-learn
+    - joblib
+    - flask
+    - uvicorn
+    - fastapi
+    - "pydantic"
+    - "gunicorn"
+    # Optional (if you want keras model)
+    - tensorflow
+    - h5py
